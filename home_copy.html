@@ -1,0 +1,1159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MSC - CYBER SECURITY - Deng Malok</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="#">
+	<meta name="description" content="MSC - CYBER SECURITY - Deng Malok">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="Picture3.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="css2.css">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="all.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="bootstrap-icons.css"> -->
+	<link rel="stylesheet" type="text/css" href="tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="choices.min.css">
+	<link rel="stylesheet" type="text/css" href="flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="glightbox.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+	<!-- Offcanvas menu START -->
+	<div class="offcanvas offcanvas-w-500px offcanvas-end" tabindex="-1" id="offcanvasBookstay" aria-labelledby="offcanvasBookstayLabel">
+		<div class="offcanvas-header border-bottom px-3">
+			<h5 class="offcanvas-title" id="offcanvasBookstayLabel">Book a Room</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body form-control-bg-light d-flex flex-column px-3">
+			<!-- Form START -->
+			<form>
+				<!-- Pickup -->
+				<div class="mb-3">
+					<label class="form-label mb-0">Room & Suite Type</label>
+					<select class="form-select js-choice" data-search-enabled="true" aria-label=".form-select-sm">
+						<option value="">Select location</option>
+						<option>Agave suite</option>
+						<option>Olive Grove Suite</option>
+						<option>Palm Suite</option>
+						<option>Casa Green Suite</option>
+					</select>
+				</div>
+
+				<!-- Date -->
+				<div class="mb-3">
+					<label class="form-label mb-0">Check in</label>
+					<input type="text" class="form-control flatpickr" data-date-format="d M Y" placeholder="Select date">
+				</div>
+				
+				<!-- Date -->
+				<div class="mb-3">
+					<label class="form-label mb-0">Check out</label>
+					<input type="text" class="form-control flatpickr" data-date-format="d M Y" placeholder="Select date">
+				</div>
+
+				<!-- Occupant -->
+				<div class="mb-3">
+					<!-- Dropdown input -->
+					<label class="form-label mb-0">Guests & rooms</label>
+					<div class="dropdown guest-selector me-2">
+						<input type="text" class="form-guest-selector form-control selection-result" value="2 Guests 1 Room" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+					
+						<!-- dropdown items -->
+						<ul class="dropdown-menu guest-selector-dropdown">
+							<!-- Adult -->
+							<li class="d-flex justify-content-between">
+								<div>
+									<h6 class="mb-0">Adults</h6>
+									<small>Ages 13 or above</small>
+								</div>
+
+								<div class="hstack gap-1 align-items-center">
+									<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
+									<h6 class="guest-selector-count mb-0 adults">2</h6>
+									<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
+								</div>
+							</li>
+
+							<!-- Divider -->
+							<li class="dropdown-divider"></li>
+
+							<!-- Child -->
+							<li class="d-flex justify-content-between">
+								<div>
+									<h6 class="mb-0">Child</h6>
+									<small>Ages 13 below</small>
+								</div>
+
+								<div class="hstack gap-1 align-items-center">
+									<button type="button" class="btn btn-link child-remove p-0 mb-0" ><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
+									<h6 class="guest-selector-count mb-0 child">0</h6>
+									<button type="button" class="btn btn-link child-add p-0 mb-0" ><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
+								</div>
+							</li>
+
+							<!-- Divider -->
+							<li class="dropdown-divider"></li>
+
+							<!-- Rooms -->
+							<li class="d-flex justify-content-between">
+								<div>
+									<h6 class="mb-0">Rooms</h6>
+									<small>Max room 8</small>
+								</div>
+
+								<div class="hstack gap-1 align-items-center">
+									<button type="button" class="btn btn-link room-remove p-0 mb-0" ><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
+									<h6 class="guest-selector-count mb-0 rooms">1</h6>
+									<button type="button" class="btn btn-link room-add p-0 mb-0" ><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Buttons -->
+				<div class="text-center">
+					<button class="btn btn-primary-soft w-100 mb-0">Check Availability</button>
+				</div>
+			</form>
+			<!-- Form END -->
+
+			<!-- List -->
+			<div class="bg-light p-3 rounded mt-auto">
+				<h6>Why Book Direct?</h6>
+				<ul class="small ps-3">
+					<li class="mb-2">10% discount is applied</li>
+					<li class="mb-2">15% off on spa treatment</li>
+					<li class="mb-2">Best price guaranteed</li>
+					<li class="mb-2">Daily complimentary sunrise yoga</li>
+					<li class="mb-2">Early check-in and late check-out</li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+	<!-- Offcanvas menu END -->
+
+<!-- Header START -->
+<header class="header-transparent">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-dark navbar-expand-xl">
+		<div class="container-fluid px-md-5">
+			<!-- Logo START
+			<a class="navbar-brand" href="home.html">
+				<img class="navbar-brand-item" src="Picture3.png" alt="logo">
+			</a>
+			Logo END -->
+
+      <!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto me-3 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll mx-auto">
+
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Home</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Archive</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Gallery</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Book button -->
+			<div class="nav flex-row ms-xl-auto">
+				<button class="btn btn-sm btn-primary mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookstay" aria-controls="offcanvasBookstay"><i class="bi bi-calendar-week me-2"></i>Book a Stay</button>
+			</div>
+
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main banner START -->
+<section class="position-relative py-1 py-sm-1" style="background-image:url(one.jpg); background-position: center left; background-size: cover;">
+	<!-- Background dark overlay -->
+	<div class="bg-overlay bg-dark opacity-2"></div>
+	<div class="container z-index-9 position-relative">
+		<div class="row">
+			<div class="col-xl-8 m-auto text-center py-xl-8">
+				  <img src="Picture2.png" class="rounded" alt="..." style="max-width: 40%";>
+			
+				<h1 class="display-4 text-white mb-3">Dr. Daniel Deng MALOK</h1>
+				<h5 class="text-white mb-3">MSC CYBERSECURITY</h5>
+				<a href="#" class="btn btn-lg btn-danger mb-2">E - Portofolio</a>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Main banner END -->
+
+<!-- =======================
+About START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-8 m-auto text-justify">
+				<h2>About Daniel Malok (PhD) </h2><hr>
+				<p class="lead">Dr. Daniel Malok has been an information management expert/security analyst at the Africa UnioN based in Addis Ababa, Ethiopia, since 2021.
+				He has been managing the  Conflict Early Warning Systems (CEWS) and contributed as an expert to the development of various technical papers on matters of 
+				application of international law to cyberspace and ICT, cybersecurity, artificial intelligence, countering radicalization and violent extremism, transnational 
+				organization crime and coordinating conferences and capacity development workshops for the African Union –CISSA Member states. He has a wide range of expertise
+				in cyber security, artificial intelligence, counter-terrorism and violent extremism. Dr. Malok’s career spans organizational development, policy formulation
+				and advisory and providing technical consultancy as part of the African Union to various organs of the UN, EU,GIZ, INTERPOL, AFRIPOL and multinational corporations. 
+				</p>
+				
+				<!-- List
+				<ul class="list-inline hstack gap-4 flex-wrap justify-content-center mt-4">
+					<li class="list-inline-item">
+						<h5 class="mb-0 fw-normal"><i class="bi bi-star fa-fw text-warning me-1"></i>Have High Rating</h5>
+					</li>
+					<li class="list-inline-item"> 
+						<h5 class="mb-0 fw-normal"><i class="bi bi-pin-map fa-fw text-primary me-1"></i>Best Locations</h5>
+					</li>
+					<li class="list-inline-item">
+						<h5 class="mb-0 fw-normal"><i class="bi bi-x-octagon fa-fw text-danger me-1"></i>Free Cancellation</h5>
+					</li>	
+					<li class="list-inline-item"> 
+						<h5 class="mb-0 fw-normal"><i class="bi bi-wallet fa-fw text-success me-1"></i>Payment Options</h5>
+					</li>
+				</ul> -->
+
+				<!-- Button and rating -->
+				<div class="d-sm-flex justify-content-center align-items-center mt-4">
+					
+					<!-- Button -->
+					<div> <a href="#" class="btn btn-lg btn-danger mb-0">Read More</a> </div>
+				</div>
+			</div>
+			<div class="col-lg-4 m-auto"><br>
+				<div class="accordion accordion-primary" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+								<strong>Induction to Computing Course</strong>
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+							<div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+								<p class="text-sm-start">The <strong>Induction to Computing</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> provides a foundational understanding of 
+								computing principles essential for cybersecurity professionals. The program emphasizes security by design, digital identity, digital forensics,
+								and network security.</p>
+								<p  class="text-sm-start">Students gain practical experience with current cybersecurity technologies and develop skills in cryptography, authentication, and AI-driven
+								security solutions. The course is part of a broader curriculum designed to equip graduates with the ability to evaluate security frameworks and 
+								engineer solutions to cyber threats critically.</p>
+							</div>
+						</div>
+					</div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<strong>Launching into Cybersecurity Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Launching into Cyber Security</strong> course at the <strong>University of Essex Online</strong> introduces students to key theories and practices in cybersecurity
+							while exploring future developments in the field. The course builds foundational knowledge and emphasizes ethical and professional responsibilities
+							within cybersecurity.
+							</p>
+						  </div>
+						</div>
+					  </div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							<strong>Network Security Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Network Security</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> 
+							focuses on securing digital communications and protecting network infrastructures. It covers key topics such as cryptography, authentication, 
+							intrusion detection, and secure network design.</p>
+							<p class="text-justify">Students gain hands-on experience with security protocols and tools to safeguard networks against cyber threats. The course is part of a broader 
+							curriculum that equips graduates with the ability to analyze vulnerabilities and implement robust security measures.</p>
+
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Principles of Digital Forensic and Cyber Law Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p>The <strong>Principles of Digital Forensics and Cyber Law</strong> course at the <strong>University of Essex Online</strong> explores cybersecurity's legal and ethical aspects 
+							while providing a strong foundation in digital forensics.</p>
+							<p>Students gain an understanding of common legal principles that apply to cyberspace, including regulatory challenges and expert evidence in 
+							forensic investigations. The course equips learners with the ability to navigate cyber law frameworks and apply forensic techniques to real-world 
+							scenarios.</p>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Secure Software Development Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Secure Software Development,</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> focuses on building secure 
+							applications by integrating security principles into the software development lifecycle.</p>
+							<p>Students explore methodologies such as <strong>TOGAF</strong> and <strong>Agile</strong>, secure coding practices, software construction, and testing techniques.
+							The course equips learners with the ability to analyze vulnerabilities and implement robust security measures in software systems.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+									<strong>Secure Systems Architecture Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							  <p class="text-justify">The <strong>Secure Systems Architecture</strong> course in the <strong>MSc Cyber Security </strong> program at the <strong>University of Essex </strong>
+							  focuses on designing and implementing secure computing environments. It covers key security principles by design, cryptographic techniques, and
+							  secure network infrastructure.</p>
+							  <p class="text-justify">Students explore methodologies for assessing vulnerabilities, mitigating cyber threats, and engineering resilient security solutions. The course is part
+							  of a broader curriculum that equips graduates with the ability to critically evaluate security frameworks and apply best practices in system architecture.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					<div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Security Risk Management Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Security Risk Management</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> explores the principles 
+							of identifying, assessing, and mitigating security risks in digital environments. It covers key topics such as information security governance, 
+							threat analysis, business continuity, and compliance with security standards.</p>
+							<p class="text-justify">Students gain practical insights into risk assessment methodologies and learn how to implement security frameworks that 
+							protect organizations from cyber threats. The course will equip graduates to evaluate vulnerabilities and develop strategic security solutions.</p>
+						</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+									<strong> Human Factors Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Human Factors</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex Online</strong> examines the intersection 
+							of psychology and cybersecurity, focusing on how human behaviour influences security risks and solutions.</p>
+							<p class="text-justify">Students explore topics such as <strong>social engineering, usability in security design</strong>, and ethical considerations in cybersecurity. 
+							The course provides insights into how cognitive biases, decision-making processes, and user behaviour impact security vulnerabilities and defence strategies.</p>
+						</div>
+						</div>
+					  </div>
+				  </div><br>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+About END -->
+
+<!-- =======================
+Experience START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container-fluid px-lg-5">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12 text-center">
+				<h2>Research Methods and Professional Practices</h2><hr>
+			</div>
+		</div>
+
+		<!-- Slider START -->
+		<div class="tiny-slider arrow-round arrow-blur rounded-3 overflow-hidden">
+			<div class="tiny-slider-inner" data-autoplay="true" data-arrow="false" data-dots="false" data-items-xl="4" data-items-lg="3" data-items-md="2" data-items-xs="1">
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="aiimg.jpg" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit One Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Reflective Activity 1 – Ethics in Computing in the Age of Generative AI</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="Sahelregion.jpg" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Two Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Literature Review and Research Proposal Outlines</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="life-cycle-graphic-crop.png" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Three Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Research Proposal Review</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="Research-Surveys.png" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Five Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Reflective Activity 2, Case Study: Inappropriate Use of Surveys</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="Hypotesting.png" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Seven Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Hypothesis Testing WorksheetFile</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="drone.jpg" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Eight Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Inference Worksheet</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="chart.png" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Nine Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Charts Worksheet</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+					<!-- Card item START -->
+					<div>
+						<div class="card card-metro overflow-hidden">
+							<img src="Data-Science.png" alt="">
+							<!-- Image overlay -->
+							<div class="card-img-overlay d-flex"> 
+								<!-- Info -->
+								<div class="card-text mt-auto">
+									<h4><a href="#" class="text-white stretched-link">Unit Ten Artefact</a></h4>
+									<p class="text-white mb-2">E-Portfolio Activity: Statistical Worksheet Submissions</p>
+									<a href="#" class="btn btn-link text-white p-0 mb-0">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+			</div>	
+		</div>
+	</div>
+</section>
+<!-- =======================
+Experience END -->
+
+<!-- =======================
+Rooms START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container-fluid px-lg-5">
+
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-xxl-8 mx-auto">
+				<div class="d-sm-flex justify-content-between align-items-center">
+					<h2 class="mb-0">Our Favorite Rooms</h2>
+					<a href="#" class="btn btn-dark mb-0 d-grid">See all rooms</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slider START -->
+		<div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
+			<div class="tiny-slider-inner" data-gutter="0" data-arrow="true" data-dots="false" data-items="1">
+				<!-- Card item START -->
+				<div>
+					<div class="card overflow-hidden rounded-0 h-600px" style="background-image:url(01.jpg); background-position: center left; background-size: cover;">
+						<!-- Background dark overlay -->
+						<div class="bg-overlay bg-dark opacity-3"></div>
+
+						<!-- Card body content -->
+						<div class="row mt-auto justify-content-end z-index-9">
+							<div class="col-md-8 col-xl-6 col-xxl-4">
+								<div class="card-body bg-mode rounded p-3 p-md-5 m-2 m-lg-6">
+									<!-- Title -->
+									<h4>One Bedroom Ocean Suit</h4>
+
+									<!-- Content -->
+									<ul class="nav h6 fw-light nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">847-900 SQ.Ft</li>
+										<li class="nav-item">79-84 SQ.M</li>
+									</ul>
+
+									<p class="mb-3">Lively use looked latter regard had. We understand that theory is important to build a solid foundation</p>
+
+									<!-- List -->
+									<ul class="list-inline hstack flex-wrap gap-2 mb-3">
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Ocean View
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0"> 
+											<i class="bi bi-check-lg text-success me-1"></i>Living Roof
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Outdoor Soaking Tub
+										</li>
+									</ul>
+
+									<!-- Buttons -->
+									<a href="#" class="btn btn-light mb-0">Reserve <i class="fa-solid fa-arrow-right-long"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<!-- Card item END -->
+
+				<!-- Card item START -->
+				<div>
+					<div class="card overflow-hidden rounded-0 h-600px" style="background-image:url(03.jpg); background-position: center left; background-size: cover;">
+						<!-- Background dark overlay -->
+						<div class="bg-overlay bg-dark opacity-3"></div>
+						
+						<!-- Card body content -->
+						<div class="row mt-auto justify-content-end z-index-9">
+							<div class="col-md-8 col-xl-6 col-xxl-4">
+								<div class="card-body bg-mode rounded p-3 p-md-5 m-2 m-lg-6">
+									<!-- Title -->
+									<h4>The Entertainment Suite</h4>
+
+									<!-- Content -->
+									<ul class="nav h6 fw-light nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">847-900 SQ.Ft</li>
+										<li class="nav-item">79-84 SQ.M</li>
+									</ul>
+
+									<p class="mb-3">Lively use looked latter regard had. We understand that theory is important to build a solid foundation</p>
+
+									<!-- List -->
+									<ul class="list-inline hstack flex-wrap gap-2 mb-3">
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Ocean View
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Private Deck
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0"> 
+											<i class="bi bi-check-lg text-success me-1"></i>Living Roof
+										</li>
+									</ul>
+
+									<!-- Buttons -->
+									<a href="#" class="btn btn-light mb-0">Reserve <i class="fa-solid fa-arrow-right-long"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<!-- Card item END -->
+
+				<!-- Card item START -->
+				<div>
+					<div class="card overflow-hidden rounded-0 h-600px" style="background-image:url(02.jpg); background-position: center left; background-size: cover;">
+						<!-- Background dark overlay -->
+						<div class="bg-overlay bg-dark opacity-3"></div>
+						
+						<!-- Card body content -->
+						<div class="row mt-auto justify-content-end z-index-9">
+							<div class="col-md-8 col-xl-6 col-xxl-4">
+								<div class="card-body bg-mode rounded p-3 p-md-5 m-2 m-lg-6">
+									<!-- Title -->
+									<h4>The Penthouse Suite</h4>
+
+									<!-- Content -->
+									<ul class="nav h6 fw-light nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">789-850 SQ.Ft</li>
+										<li class="nav-item">78-85 SQ.M</li>
+									</ul>
+
+									<p class="mb-3">Lively use looked latter regard had. We understand that theory is important to build a solid foundation</p>
+
+									<!-- List -->
+									<ul class="list-inline hstack flex-wrap gap-2 mb-3">
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Indoor Tub
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0"> 
+											<i class="bi bi-check-lg text-success me-1"></i>Private Deck
+										</li>
+										<li class="list-inline-item h6 fw-normal mb-0">
+											<i class="bi bi-check-lg text-success me-1"></i>Freestanding
+										</li>
+									</ul>
+
+									<!-- Buttons -->
+									<a href="#" class="btn btn-light mb-0">Reserve <i class="fa-solid fa-arrow-right-long"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<!-- Card item END -->
+			</div>
+		</div>
+		<!-- Slider END -->
+	</div>
+</section>
+<!-- ======================= 
+Rooms END -->
+
+<!-- =======================
+Offers START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container-fluid px-lg-5">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12 text-center">
+				<h2>Offers Of The Month</h2>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<img src="assets/images/offer/02.jpg" class="card-img" alt="">
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">Pass Holder Package</a></h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<img src="assets/images/offer/03.jpg" class="card-img" alt="">
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">More Sun, More Fun</a></h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<img src="assets/images/offer/07.jpg" class="card-img" alt="">
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">A Stay That Gives Back</a></h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<img src="assets/images/offer/04.jpg" class="card-img" alt="">
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">Elevate Your Stay</a></h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<img src="assets/images/offer/06.jpg" class="card-img" alt="">
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">Spa Package Offer</a></h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Offer item -->
+			<div class="col-6 col-md-4 col-xl-2">
+				<div class="card bg-transparent h-100">
+					<div class="bg-light card-img position-relative h-100">
+						<button class="btn btn-lg btn-primary btn-round mb-0 position-absolute top-50 start-50 translate-middle"><i class="bi bi-arrow-right"></i></button>
+					</div>
+					<div class="card-body text-center p-2">
+						<h6 class="mb-0"><a href="#" class="stretched-link">View All Offers</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Offers END -->
+
+<!-- =======================
+Gallery START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container-fluid px-lg-5">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12 text-center">
+				<h2 class="mb-0">Some Of Our Happy Moments</h2>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Gallery item -->
+			<div class="col-xl-5 mt-xl-auto">
+				<img src="05.jpg" class="rounded-3 align-items-bottom" alt="">
+			</div>
+
+			<!-- Gallery item -->
+			<div class="col-xl-7">
+				<div class="card overflow-hidden h-600px" style="background-image:url(04.jpg); background-position: center left; background-size: cover;">
+					<!-- Background dark overlay -->
+					<div class="bg-overlay bg-dark opacity-3"></div>
+					<!-- Testimonial START -->
+					<div class="row mt-auto z-index-9 p-2 p-sm-4">
+						<div class="col-sm-8 col-xxl-6">
+							<div class="bg-mode rounded position-relative">
+								<!-- Blockquote -->
+								<div class="icon-lg text-white bg-primary rounded-circle position-absolute top-0 start-0 translate-middle ms-7">
+									<i class="bi bi-quote"></i>
+								</div>
+
+								<!-- Slider START -->
+								<div class="tiny-slider arrow-round arrow-blur arrow-hover overflow-hidden">
+									<div class="tiny-slider-inner" data-gutter="2" data-arrow="true" data-dots="false" data-items="1">
+										<!-- Testimonial item START -->
+										<div class="p-4 p-lg-5">
+											<!-- Content -->
+											<h6 class="fw-normal mb-3">Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed in laughing</h6>
+											<!-- Avatar and rating -->
+											<div class="d-sm-flex justify-content-between align-items-bottom">
+												<div class="d-flex align-items-center">
+													<!-- Avatar -->
+													<div class="avatar avatar-xs">
+														<img class="avatar-img rounded-circle" src="09.jpg" alt="avatar">
+													</div>
+													<!-- Info -->
+													<div class="ms-2">
+														<h6 class="mb-0 fw-light"><a href="#">Lori Stevens</a></h6>
+													</div>
+												</div>
+
+												<!-- Rating -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+												</ul>
+											</div>	
+										</div>
+										<!-- Testimonial item END -->
+
+										<!-- Testimonial item START -->
+										<div class="p-4 p-lg-5">
+											<!-- Content -->
+											<h6 class="fw-normal mb-3">Passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous an uncommonly do.</h6>
+											<!-- Avatar and rating -->
+											<div class="d-sm-flex justify-content-between align-items-bottom">
+												<div class="d-flex align-items-center">
+													<!-- Avatar -->
+													<div class="avatar avatar-xs">
+														<img class="avatar-img rounded-circle" src="05.jpg" alt="avatar">
+													</div>
+													<!-- Info -->
+													<div class="ms-2">
+														<h6 class="mb-0 fw-light"><a href="#">Carolyn Ortiz</a></h6>
+													</div>
+												</div>
+
+												<!-- Rating -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small me-0"><i class="fa-solid fa-star text-warning"></i></li>
+													<li class="list-inline-item small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+												</ul>
+											</div>	
+										</div>
+										<!-- Testimonial item END -->
+									</div>
+								</div>	
+								<!-- Slider END -->	
+							</div>	
+						</div>
+					</div>
+					<!-- Testimonial END -->
+				</div>
+			</div>
+
+			<!-- Gallery item -->
+			<div class="col-xxl-7">
+				<!-- Slider START -->
+				<div class="tiny-slider arrow-round arrow-hover arrow-dark">
+					<div class="tiny-slider-inner rounded-2" data-autoplay="false" data-arrow="true" data-dots="false" data-items="1">
+						<!-- Image item -->
+						<div>
+							<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="06.jpg">
+								<div class="card card-element-hover card-overlay-hover overflow-hidden">
+									<!-- Image -->
+									<img src="06.jpg" class="rounded-3" alt="">
+									<!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<!-- Image item -->
+						<div>
+							<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="05.jpg">
+								<div class="card card-element-hover card-overlay-hover overflow-hidden">
+									<!-- Image -->
+									<img src="05.jpg" class="rounded-3" alt="">
+									<!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<!-- Image item -->
+						<div>
+							<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="06.jpg">
+								<div class="card card-element-hover card-overlay-hover overflow-hidden">
+									<!-- Image -->
+									<img src="06.jpg" class="rounded-3" alt="">
+									<!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Slider END -->
+			</div>
+
+			<!-- Gallery item -->
+			<div class="col-xxl-5 m-xxl-auto">
+				<div class="card card-body bg-transparent p-xxl-6">
+					<h3>Education Experience</h3>
+					<p>Passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do.</p>
+					
+					<div class="row g-4">
+						<!-- Item -->
+						<div class="col-12">
+							<div class="d-flex">
+								<div class="icon-lg bg-primary bg-opacity-10 flex-shrink-0 text-primary rounded-circle"><i class="fa-regular fa-thumbs-up"></i></div>
+								<div class="ps-3">
+									<h5 class="mt-2">Hassle Free Booking</h5>
+									<p class="mb-0">Departure defective arranging rapturous did. Conduct denied adding worthy little.</p>
+								</div>
+							</div>
+						</div>
+						<!-- Item -->
+						<div class="col-12">
+							<div class="d-flex">
+								<div class="icon-lg bg-orange bg-opacity-10 flex-shrink-0 text-orange rounded-circle"><i class="fa-solid fa-star"></i></div>
+								<div class="ps-3">
+									<h5 class="mt-2">18,000 Reviews</h5>
+									<p class="mb-0">Supposing so be resolving breakfast am or perfectly. Conduct denied adding worthy little.</p>
+								</div>
+							</div>
+						</div>
+						<!-- Item -->
+						<div class="col-12">
+							<div class="d-flex">
+								<div class="icon-lg bg-danger bg-opacity-10 flex-shrink-0 text-danger rounded-circle"><i class="bi bi-headset"></i></div>
+								<div class="ps-3">
+									<h5 class="mt-2">24/7 Supports</h5>
+									<p class="mb-0">Arranging rapturous did believe him all had supported. Conduct denied adding worthy little</p>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Gallery END -->
+
+<!-- =======================
+Action box START -->
+<section class="pt-5 pt-md-8">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="bg-light position-relative overflow-hidden rounded-3 p-4 p-md-0">
+					
+					<!-- Image -->
+					<div class="position-absolute bottom-0 end-0 me-n5 d-none d-md-block">
+						<img src="island.svg" alt="">
+					</div>
+
+
+					<div class="row position-relative">
+						<div class="col-md-10 text-center mx-auto py-md-5">
+							<!-- Title -->
+							<h2 class="mb-4">COURSES UNDERTAKEN </h2>
+							<h6 class="mb-4">Report Of Statistical Analysis And Interpretation Of Datasets Of Four Data Sets: Diet A And B, Agent 1 And 2, Male And Female Income, Area 1 And 2
+
+26 March 2025
+</h5><hr>
+							<p class="mb-4">Descriptive statistics was applied to analyse and interpret the four data sets: Diet A and B, Agent 1 and 2, Male and Female Income, and Area 1 and 2. There was an assumption that the data sets had equal variance. According to Hill, Berry, Hill and Berry (2021), descriptive statistics are crucial for simplifying datasets, applying calculations of variability or central decency, identifying outliers, and visualising data through graphs, charts, and tables. Descriptive statistics enable further statistical analysis through predictive modelling or inferential statistics (Hill, Berry, Hill & Berry, 2021).</p>
+						
+						</div>
+					</div> <!-- Row END -->
+				</div>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Action box END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark py-7">
+
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="col-lg-6 mx-auto text-center">
+				<!-- Logo -->
+				<img class="mx-auto h-60px" src="logo-light.svg" alt="logo">
+				<p class="mt-3 text-white">Speedily say has suitable disposal add boy. On forth doubt miles of child. Exercise joy man children rejoiced.</p>
+				<!-- Links -->
+				<ul class="nav justify-content-between text-primary-hover mt-3 mt-md-0">
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">About</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Terms</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Privacy</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Career</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Contact us</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Cookies</a></li>
+				</ul>
+				<!-- Social media button -->
+				<ul class="list-inline mt-3 mb-0">
+					<li class="list-inline-item"> 
+						<a class="btn btn-white btn-sm shadow px-2 text-facebook" href="#">
+							<i class="fab fa-fw fa-facebook-f"></i>
+						</a> 
+					</li>
+					<li class="list-inline-item"> 
+						<a class="btn btn-white btn-sm shadow px-2 text-instagram" href="#">
+							<i class="fab fa-fw fa-instagram"></i>
+						</a> 
+					</li>
+					<li class="list-inline-item"> 
+						<a class="btn btn-white btn-sm shadow px-2 text-twitter" href="#">
+							<i class="fab fa-fw fa-twitter"></i>
+						</a> 
+					</li>
+					<li class="list-inline-item"> 
+						<a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#">
+							<i class="fab fa-fw fa-linkedin-in"></i>
+						</a> 
+					</li>
+				</ul>
+				<!-- copyright text -->
+				<div class="text-body-secondary text-primary-hover mt-3"> Copyrights ©2024 Booking. Build by <a href="https://www.webestica.com/" class="text-body-secondary">Webestica</a>. </div>
+			</div>
+		</div>
+		
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="choices.min.js"></script>
+<script src="tiny-slider.js"></script>
+<script src="flatpickr.min.js"></script>
+<script src="glightbox.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="functions.js"></script>
+
+</body>
+</html>
