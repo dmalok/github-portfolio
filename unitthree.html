@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MSC - CYBER SECURITY - Deng Malok</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="#">
+	<meta name="description" content="MSC - CYBER SECURITY - Deng Malok">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="dengpicture.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="css2.css">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="all.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="bootstrap-icons.css"> -->
+	<link rel="stylesheet" type="text/css" href="tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="choices.min.css">
+	<link rel="stylesheet" type="text/css" href="flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="glightbox.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- Header START -->
+<header class="header-transparent">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-dark navbar-expand-xl">
+		<div class="container-fluid px-md-5">
+			<!-- Logo START
+			<a class="navbar-brand" href="home.html">
+				<img class="navbar-brand-item" src="Picture3.png" alt="logo">
+			</a>
+			Logo END -->
+
+      <!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto me-3 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll mx-auto">
+
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Archive</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Gallery</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Book button -->
+			<div class="nav flex-row ms-xl-auto">
+				<button class="btn btn-sm btn-primary mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookstay" aria-controls="offcanvasBookstay">
+				<i class="bi bi-calendar-week me-2"></i>Sign in</button>
+			</div>
+
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main banner START -->
+<section class="position-relative py-1 py-sm-1" style="background-image:url(three.jpg); background-position: center left; background-size: cover;">
+	<!-- Background dark overlay -->
+	<div class="bg-overlay bg-dark opacity-2"></div>
+	<div class="container z-index-9 position-relative">
+		<div class="row">
+			<div class="col-xl-8 m-auto text-center py-xl-8">
+				  <!--<img src="dengpicture.png" class="rounded" alt="..." style="max-width: 40%";>-->
+			
+				<h3 class="display-4 text-white mb-1">UNIT THREE ARTEFACT</h3>
+				<h5 class="text-white mb-3"><strong>E-Portfolio Activity</strong>: Research Proposal Review</h5>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Main banner END -->
+
+<!-- =======================
+About START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 text-justify">
+				<h3><strong>Topic</strong>: Terrorist Use of Emerging Technologies in the Sahel Region of Africa</h3><hr>
+				<p class="lead text-justify">According to Sreenivas (2023), terrorist use of emerging technologies in the Sahel region highlights how extremist groups exploit advancements in digital tools, drones, and encrypted communications to enhance their operations. Studies indicate that militant Islamist groups leverage technologies for recruitment, propaganda dissemination, and operational coordination, exacerbating regional instability (Africa Center for Strategic Studies, 2019). Ouma and Mawia (2023) found that the cyber and digital tools used by the terrorist extremist groups included encrypted messaging platforms and social media to radicalise and recruit the youth; the security forces and also the terrorists are using unmanned aerial vehicles (UAVs) for surveillance and attack. There are ongoing country, regional and international efforts to counter terrorism in the Sahel. 
+					</p>		
+								
+				
+			</div>
+			
+			
+			<div class="col-lg-4"><br>
+				<div class="accordion accordion-primary" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+								<strong>Induction to Computing Course</strong>
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+							<div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+								<p class="text-sm-start">The <strong>Induction to Computing</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> provides a foundational understanding of 
+								computing principles essential for cybersecurity professionals. The program emphasizes security by design, digital identity, digital forensics,
+								and network security.</p>
+								<p  class="text-sm-start">Students gain practical experience with current cybersecurity technologies and develop skills in cryptography, authentication, and AI-driven
+								security solutions. The course is part of a broader curriculum designed to equip graduates with the ability to evaluate security frameworks and 
+								engineer solutions to cyber threats critically.</p>
+							</div>
+						</div>
+					</div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<strong>Launching into Cybersecurity Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Launching into Cyber Security</strong> course at the <strong>University of Essex Online</strong> introduces students to key theories and practices in cybersecurity
+							while exploring future developments in the field. The course builds foundational knowledge and emphasizes ethical and professional responsibilities
+							within cybersecurity.
+							</p>
+						  </div>
+						</div>
+					  </div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							<strong>Network Security Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Network Security</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> 
+							focuses on securing digital communications and protecting network infrastructures. It covers key topics such as cryptography, authentication, 
+							intrusion detection, and secure network design.</p>
+							<p class="text-justify">Students gain hands-on experience with security protocols and tools to safeguard networks against cyber threats. The course is part of a broader 
+							curriculum that equips graduates with the ability to analyze vulnerabilities and implement robust security measures.</p>
+
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Principles of Digital Forensic and Cyber Law Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p>The <strong>Principles of Digital Forensics and Cyber Law</strong> course at the <strong>University of Essex Online</strong> explores cybersecurity's legal and ethical aspects 
+							while providing a strong foundation in digital forensics.</p>
+							<p>Students gain an understanding of common legal principles that apply to cyberspace, including regulatory challenges and expert evidence in 
+							forensic investigations. The course equips learners with the ability to navigate cyber law frameworks and apply forensic techniques to real-world 
+							scenarios.</p>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Secure Software Development Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Secure Software Development,</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> focuses on building secure 
+							applications by integrating security principles into the software development lifecycle.</p>
+							<p>Students explore methodologies such as <strong>TOGAF</strong> and <strong>Agile</strong>, secure coding practices, software construction, and testing techniques.
+							The course equips learners with the ability to analyze vulnerabilities and implement robust security measures in software systems.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+									<strong>Secure Systems Architecture Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							  <p class="text-justify">The <strong>Secure Systems Architecture</strong> course in the <strong>MSc Cyber Security </strong> program at the <strong>University of Essex </strong>
+							  focuses on designing and implementing secure computing environments. It covers key security principles by design, cryptographic techniques, and
+							  secure network infrastructure.</p>
+							  <p class="text-justify">Students explore methodologies for assessing vulnerabilities, mitigating cyber threats, and engineering resilient security solutions. The course is part
+							  of a broader curriculum that equips graduates with the ability to critically evaluate security frameworks and apply best practices in system architecture.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					<div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Security Risk Management Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Security Risk Management</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> explores the principles 
+							of identifying, assessing, and mitigating security risks in digital environments. It covers key topics such as information security governance, 
+							threat analysis, business continuity, and compliance with security standards.</p>
+							<p class="text-justify">Students gain practical insights into risk assessment methodologies and learn how to implement security frameworks that 
+							protect organizations from cyber threats. The course will equip graduates to evaluate vulnerabilities and develop strategic security solutions.</p>
+						</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+									<strong> Human Factors Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Human Factors</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex Online</strong> examines the intersection 
+							of psychology and cybersecurity, focusing on how human behaviour influences security risks and solutions.</p>
+							<p class="text-justify">Students explore topics such as <strong>social engineering, usability in security design</strong>, and ethical considerations in cybersecurity. 
+							The course provides insights into how cognitive biases, decision-making processes, and user behaviour impact security vulnerabilities and defence strategies.</p>
+						</div>
+						</div>
+					  </div>
+				  </div><br>
+				  <!-- Card -->
+				  
+				  <div class="alert alert-success" role="alert">
+					<h6 class="alert-heading">References </h6><hr>
+					<p>	> <i>Africa Center for Strategic Studies. (2019) A review of major regional security efforts in the Sahel.</i></p>
+					<p>	> <i>Ouma, M., & Mawia, W. S. (2023) Technological innovations and regional security control towards sustainable development in the G5 Sahel region.</i></p>					
+					<p>	> <i>African Journal of Politics and Administrative Studies 16(2): 694-711.</i></p>		
+					<p> > <i>African Journal of Politics and Administrative Studies 16(2): 694-711.</i></p>	
+					<p> > <i>Sreenivas, A. V. (2023) Emerging front of terrorism and changing regional geopolitics of African Sahel region: A literature review. YMER Digital.</i></p>
+  <hr>
+</div>
+				  
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+About END -->
+
+
+<!-- =======================
+Action box START -->
+<section class="pt-5 pt-md-8">
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="bg-light position-relative overflow-hidden rounded-3 p-4 p-md-0">
+					
+					<!-- Image -->
+					<div class="position-absolute bottom-0 end-0 me-n5 d-none d-md-block">
+						<img src="two.jpg" alt="">
+					</div>
+
+
+					<div class="row position-relative">
+						<div class="col-md-10 text-center mx-auto py-md-5">
+							<!-- Title -->
+							<h2 class="mb-4">COURSES UNDERTAKEN </h2>
+							<h6 class="mb-4">Report Of Statistical Analysis And Interpretation Of Datasets Of Four Data Sets: Diet A And B, Agent 1 And 2, Male And Female Income, 
+							Area 1 And 2 26 March 2025 </h5><hr>
+							<p class="mb-4">Descriptive statistics was applied to analyse and interpret the four data sets: Diet A and B, Agent 1 and 2, Male and Female Income, and Area 1 and 2. There was an assumption that the data sets had equal variance. According to Hill, Berry, Hill and Berry (2021), descriptive statistics are crucial for simplifying datasets, applying calculations of variability or central decency, identifying outliers, and visualising data through graphs, charts, and tables. Descriptive statistics enable further statistical analysis through predictive modelling or inferential statistics (Hill, Berry, Hill & Berry, 2021).</p>
+						
+						</div>
+					</div> <!-- Row END -->
+				</div>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Action box END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark py-7">
+
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="col-lg-6 mx-auto text-center">
+				<!-- Logo 
+				<img class="mx-auto h-60px" src="Picture3.png" alt="logo"> -->
+				<h3 class="display-6 text-white mb-3">Dr. Daniel Deng MALOK</h3>
+				<p class="mt-3 text-white">MSC CYBERSECURITY AT THE UNIVERSITY ESSEX.</p>
+				<!-- Links -->
+				<ul class="nav justify-content-between text-primary-hover mt-3 mt-md-0">
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="about.html">About</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Archive</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Gallery</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Contact</a></li>
+				</ul>
+				<!-- copyright text -->
+				<div class="text-body-secondary text-primary-hover mt-3"> Copyrights ©2025 Dr. Daniel Deng MALOK </div>
+			</div>
+		</div>
+		
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top
+<div class="back-top"></div>-->
+
+<!-- Bootstrap JS -->
+<script src="bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="choices.min.js"></script>
+<script src="tiny-slider.js"></script>
+<script src="flatpickr.min.js"></script>
+<script src="glightbox.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="functions.js"></script>
+
+</body>
+</html>
