@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MSC - CYBER SECURITY - Deng Malok</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="#">
+	<meta name="description" content="MSC - CYBER SECURITY - Deng Malok">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="dengpicture.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="css2.css">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="all.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="bootstrap-icons.css"> -->
+	<link rel="stylesheet" type="text/css" href="tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="choices.min.css">
+	<link rel="stylesheet" type="text/css" href="flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="glightbox.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- Header START -->
+<header class="header-transparent">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-dark navbar-expand-xl">
+		<div class="container-fluid px-md-5">
+			<!-- Logo START
+			<a class="navbar-brand" href="home.html">
+				<img class="navbar-brand-item" src="Picture3.png" alt="logo">
+			</a>
+			Logo END -->
+
+      <!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto me-3 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll mx-auto">
+
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Archive</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="#">Gallery</a> </li>
+
+					<!-- Nav item Link -->
+					<li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a> </li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Book button -->
+			<div class="nav flex-row ms-xl-auto">
+				<button class="btn btn-sm btn-primary mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookstay" aria-controls="offcanvasBookstay">
+				<i class="bi bi-calendar-week me-2"></i>Sign in</button>
+			</div>
+
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main banner START -->
+<section class="position-relative py-1 py-sm-1" style="background-image:url(three.jpg); background-position: center left; background-size: cover;">
+	<!-- Background dark overlay -->
+	<div class="bg-overlay bg-dark opacity-2"></div>
+	<div class="container z-index-9 position-relative">
+		<div class="row">
+			<div class="col-xl-8 m-auto text-center py-xl-8">
+				  <!--<img src="dengpicture.png" class="rounded" alt="..." style="max-width: 40%";>-->
+			
+				<h3 class="display-4 text-white mb-1">UNIT TWO ARTEFACT</h3>
+				<h5 class="text-white mb-3"><strong>E-Portfolio Activity</strong>: Literature Review and Research Proposal Outlines</h5>
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Main banner END -->
+
+<!-- =======================
+About START -->
+<section class="pt-5 pt-md-8 pb-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 text-justify">
+				<h3>Reflective Activity 1 – Ethics in Computing in the Age of Generative AI</h3><hr>
+				<p class="lead text-justify">Analysis of Corrêa et al. (2023) on Artificial Intelligence Corrêa et al. (2023) argued that  AI systems do not operate in the black box model in which it is now known how it arrives at decisions on the problems it is provided; humans should have control and autonomy over AI systems, and values should be respected. Corrêa et al. (2023) also state that AI systems should be developed and work within an ethical and morally guided framework. On the other hand, Zhai et al. (2023) postulated that there is a need for research on human and AI collaboration to build trust and oversight on how these systems operate and understand the long-term social implications of using these systems.  
+
+				</p>
+				
+				<p class="lead">There is a growing assertion among some scholars that there is a need to train AI systems on ethics and basic human morals to develop national, regional and global regulations and guidelines for using AI systems. The scholars also reiterate that there is a need to create awareness among policymakers, users, and developers about promoting the ethical development of AI systems. 
+
+				</p>
+				<p class="lead">AI is and will continue to have a significant impact on the society. In the legal domain, AI reduces the time legal researchers take to review case law, draft contracts, and perform routine tasks. Some countries are now considering the adoption of AI in courtrooms to assist in the predictive outcome of legal cases. AI's increase in automation efficiency will likely lead to reconsidering the number of lawyers our countries need to train. AI-powered facial recognition systems are now conducting massive surveillance of citizens in countries around the world. One of the key challenges that policymakers globally are struggling with is developing regulations that protect the privacy of citizens, consumers, and the intellectual property of individuals and firms. The lack of fairness, biases and discrimination among AI facial recognition systems against women and minority groups needs to be addressed. There is a need to ensure that these models are well-trained to avoid these unfair practices.  
+
+				</p>
+				
+				<p class="lead">Like many revolutions in history, the AI revolution will come with the transformation of many jobs and the total displacement of some jobs. This means that employees will need to reskill themselves to get the new jobs and opportunities created by AI. AI technologies are also transforming education in communities that do not adequately have trained and professional teachers. 
+				</p>
+				
+				<p class="lead">For countries to properly manage the adoption of AI, there is a need to invest in public awareness, develop policies on AI, promote accountability and transparency, foster international collaboration and enhance ethical research on AI. Chan (2023) pointed out that there was a need to ensure that policies were developed to guide their adoption and use in various sectors, including the education sector. Chan (2023) postulated that there was a need to ensure that students in higher learning institutions needed to be trained on how to use AI systems. This is because AI systems are already adopted in the modern workplace. 
+				</p>
+				
+						
+				<p class="lead">According to Folorunso, Olanipekun, Adewumi and Samuel (2024), the adoption of AI technologies in small island developing countries (SIDC) and land-locked developing countries (LLDC) need to be based on policies and frameworks that are based on digital infrastructure development, capacity building and development, data and privacy protection and data governance. However,   Folorunso, Olanipekun, Adewumi and Samuel (2024) observed that these countries will also need to overcome the challenges of inequality within the society, poor governance and financial contrasts through collaboration with multilateral institutions such as the International Telecommunications Union (ITU), Africa Telecommunications Union (ATU), the World Bank, companies such as Google, Facebook and organizations that will help support the development of their digital economies.   These countries are advised to join the regional infrastructure development initiatives to benefit from the economies of scale. These countries are also advised to use common frameworks on AI from organizations such as the African Union (AU) to inform their regulatory and policy development process. 
+</p>
+			
+				
+								
+				
+			</div>
+			
+			
+			<div class="col-lg-4"><br>
+				<div class="accordion accordion-primary" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+								<strong>Induction to Computing Course</strong>
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+							<div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+								<p class="text-sm-start">The <strong>Induction to Computing</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> provides a foundational understanding of 
+								computing principles essential for cybersecurity professionals. The program emphasizes security by design, digital identity, digital forensics,
+								and network security.</p>
+								<p  class="text-sm-start">Students gain practical experience with current cybersecurity technologies and develop skills in cryptography, authentication, and AI-driven
+								security solutions. The course is part of a broader curriculum designed to equip graduates with the ability to evaluate security frameworks and 
+								engineer solutions to cyber threats critically.</p>
+							</div>
+						</div>
+					</div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<strong>Launching into Cybersecurity Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Launching into Cyber Security</strong> course at the <strong>University of Essex Online</strong> introduces students to key theories and practices in cybersecurity
+							while exploring future developments in the field. The course builds foundational knowledge and emphasizes ethical and professional responsibilities
+							within cybersecurity.
+							</p>
+						  </div>
+						</div>
+					  </div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header">
+						  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							<strong>Network Security Course</strong>
+						  </button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Network Security</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> 
+							focuses on securing digital communications and protecting network infrastructures. It covers key topics such as cryptography, authentication, 
+							intrusion detection, and secure network design.</p>
+							<p class="text-justify">Students gain hands-on experience with security protocols and tools to safeguard networks against cyber threats. The course is part of a broader 
+							curriculum that equips graduates with the ability to analyze vulnerabilities and implement robust security measures.</p>
+
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Principles of Digital Forensic and Cyber Law Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body  bg-secondary rounded p-3 p-md-3 text-white">
+							<p>The <strong>Principles of Digital Forensics and Cyber Law</strong> course at the <strong>University of Essex Online</strong> explores cybersecurity's legal and ethical aspects 
+							while providing a strong foundation in digital forensics.</p>
+							<p>Students gain an understanding of common legal principles that apply to cyberspace, including regulatory challenges and expert evidence in 
+							forensic investigations. The course equips learners with the ability to navigate cyber law frameworks and apply forensic techniques to real-world 
+							scenarios.</p>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Secure Software Development Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Secure Software Development,</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> focuses on building secure 
+							applications by integrating security principles into the software development lifecycle.</p>
+							<p>Students explore methodologies such as <strong>TOGAF</strong> and <strong>Agile</strong>, secure coding practices, software construction, and testing techniques.
+							The course equips learners with the ability to analyze vulnerabilities and implement robust security measures in software systems.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					    <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+									<strong>Secure Systems Architecture Course</strong>
+							  </button>
+							</h2>
+						<div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							  <p class="text-justify">The <strong>Secure Systems Architecture</strong> course in the <strong>MSc Cyber Security </strong> program at the <strong>University of Essex </strong>
+							  focuses on designing and implementing secure computing environments. It covers key security principles by design, cryptographic techniques, and
+							  secure network infrastructure.</p>
+							  <p class="text-justify">Students explore methodologies for assessing vulnerabilities, mitigating cyber threats, and engineering resilient security solutions. The course is part
+							  of a broader curriculum that equips graduates with the ability to critically evaluate security frameworks and apply best practices in system architecture.</p>
+						  </div>
+						</div>
+					  </div>
+					  
+					<div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
+								<strong>Security Risk Management Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Security Risk Management</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex</strong> explores the principles 
+							of identifying, assessing, and mitigating security risks in digital environments. It covers key topics such as information security governance, 
+							threat analysis, business continuity, and compliance with security standards.</p>
+							<p class="text-justify">Students gain practical insights into risk assessment methodologies and learn how to implement security frameworks that 
+							protect organizations from cyber threats. The course will equip graduates to evaluate vulnerabilities and develop strategic security solutions.</p>
+						</div>
+						</div>
+					  </div>
+					  
+					  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed text-white bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+									<strong> Human Factors Course </strong>
+							  </button>
+							</h2>
+						<div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						  <div class="accordion-body bg-secondary rounded p-3 p-md-3 text-white">
+							<p class="text-justify">The <strong>Human Factors</strong> course in the <strong>MSc Cyber Security</strong> program at the <strong>University of Essex Online</strong> examines the intersection 
+							of psychology and cybersecurity, focusing on how human behaviour influences security risks and solutions.</p>
+							<p class="text-justify">Students explore topics such as <strong>social engineering, usability in security design</strong>, and ethical considerations in cybersecurity. 
+							The course provides insights into how cognitive biases, decision-making processes, and user behaviour impact security vulnerabilities and defence strategies.</p>
+						</div>
+						</div>
+					  </div>
+				  </div><br>
+				  <!-- Card -->
+				  
+				  <div class="alert alert-success" role="alert">
+					<h6 class="alert-heading">References </h6><hr>
+					<p>	> <i>Chan, C.K.Y. (2023) A comprehensive AI policy education framework for university teaching and learning. International Journal of Educational Technology in Higher Education 20 (1): 1-25. DOI: https://doi.org/10.1186/s41239-023-00408-3
+Corrêa, N.K., Galvão, C., Santos, J.W., Del Pino, C., Pinto, E.P., Barbosa, C., Massmann, D., Mambrini, R., Galvão, L., Terem, E. & De Oliveira, N. (2023) Worldwide AI ethics: A review of 200 guidelines and recommendations for AI governance. Patterns 4 (10): 2-21. DOI: 10.48550/arXiv.2206.11922
+</i></p>
+					<p>	> <i>Darling, C., Tyner-Monroe, S., Cullen, C., Borden, B., Tobey, D. & Samp, T. (June 5, 2023) US National AI &R&D Strategic Plan 2023: A comprehensive look into the future of AI. Technology's Legal Edge. Available from: https://www.technologyslegaledge.com/2023/06/us-national-ai-rd-strategic-plan-2023-a-comprehensive-look-into-the-future-of-ai/ [Accessed 9 April 2025].</i></p>
+					<p>	> <i>Folorunso, A., Olanipekun, K., Adewumi, T. & Samuel, B. (2024) A policy framework on AI usage in developing countries and its impact. Global Journal of Engineering and Technology Advances 21(01): 154-166. DOI: 10.30574/gjeta.2024.21.1.0192
+Zhai, X., Chu, X., Chai, C.S., Jong, M.S.Y., Istenic, A., Spector, M., Liu, J.B., Yuan, J. & Li, Y. (2021) A Review of Artificial Intelligence (AI) in Education from 2010 to 2020. Complexity 8812542.</i></p>
+				
+  <hr>
+</div>
+				  
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+About END -->
+
+</main><br><br>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark py-7">
+
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="col-lg-6 mx-auto text-center">
+				<!-- Logo 
+				<img class="mx-auto h-60px" src="Picture3.png" alt="logo"> -->
+				<h3 class="display-6 text-white mb-3">Dr. Daniel Deng MALOK</h3>
+				<p class="mt-3 text-white">MSC CYBERSECURITY AT THE UNIVERSITY ESSEX.</p>
+				<!-- Links -->
+				<ul class="nav justify-content-between text-primary-hover mt-3 mt-md-0">
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="about.html">About</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Archive</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="#">Gallery</a></li>
+					<li class="nav-item"><a class="nav-link p-2 text-white" href="contact.html">Contact</a></li>
+				</ul>
+				<!-- copyright text -->
+				<div class="text-body-secondary text-primary-hover mt-3"> Copyrights ©2025 Dr. Daniel Deng MALOK </div>
+			</div>
+		</div>
+		
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top
+<div class="back-top"></div>-->
+
+<!-- Bootstrap JS -->
+<script src="bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="choices.min.js"></script>
+<script src="tiny-slider.js"></script>
+<script src="flatpickr.min.js"></script>
+<script src="glightbox.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="functions.js"></script>
+
+</body>
+</html>
